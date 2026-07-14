@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aurelia — Luxury Boutique Hotel</title>
+  <meta name="description" content="A premium boutique hotel experience." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- START: NAVIGATION -->
+<header class="navbar" id="navbar">
+  <div class="container">
+    <a href="#" class="logo">Aurelia<span>.</span></a>
+    <nav>
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="rooms.html">Rooms</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="index.html#gallery">Gallery</a></li>
+          <li><a href="index.html#reviews">Reviews</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+          <li><a href="index.html#booking" class="nav-cta">Book Now</a></li>
+        </ul>
+    </nav>
+    <button class="burger" id="burger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+<!-- END: NAVIGATION -->
+
+<!-- START: SUBPAGE HERO -->
+<section class="hero hero-sub" id="home">
+  <div class="hero-content">
+    <h1>Our Rooms & Suites</h1>
+    <p>Every room is designed to offer a serene retreat with timeless elegance.</p>
+  </div>
+</section>
+<!-- END: SUBPAGE HERO -->
+
+<!-- START: BOOKING BAR WITH MODAL POPUP -->
+<div class="booking-bar-wrap" id="booking">
+  <form
+    class="booking-bar horizontal"
+    id="bookingForm"
+    name="hotel-booking"
+    method="POST"
+    data-netlify="true"
+    netlify-honeypot="bot-field"
+  >
+    <input type="hidden" name="form-name" value="hotel-booking" />
+    <p style="display:none;"><label>Don't fill this out: <input name="bot-field" /></label></p>
+
+    <!-- Kereső sáv mezői (Látható rész) -->
+    <div class="booking-field-group">
+      <label for="check-in">Check-In</label>
+      <div class="input-wrapper">
+        <i class="fa-regular fa-calendar"></i>
+        <input type="date" id="check-in" name="check-in" required />
+      </div>
+    </div>
+
+    <div class="booking-field-group">
+      <label for="check-out">Check-Out</label>
+      <div class="input-wrapper">
+        <i class="fa-regular fa-calendar"></i>
+        <input type="date" id="check-out" name="check-out" required />
+      </div>
+    </div>
+
+    <div class="booking-field-group">
+      <label for="room-type">Rooms</label>
+      <div class="input-wrapper">
+        <i class="fa-solid fa-chevron-down"></i>
+        <select id="room-type" name="room-type" required>
+          <option value="" disabled selected>Select Suite</option>
+          <option value="room-1">Deluxe Double Room</option>
+          <option value="room-2">Executive Suite</option>
+          <option value="room-3">Presidential Villa</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="booking-field-group">
+      <label for="adults">Guests</label>
+      <div class="input-wrapper">
+        <i class="fa-solid fa-chevron-down"></i>
+        <select id="adults" name="adults" required>
+          <option value="1">1 Person</option>
+          <option value="2" selected>2 Persons</option>
+          <option value="3">3 Persons</option>
+          <option value="4">4 Persons</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Ez a gomb nyitja meg a popupot -->
+    <button type="button" class="booking-horizontal-submit" id="openModalBtn">Check<br>Availability</button>
+
+    <!-- ELŐUGRÓ ABLAK (MODAL POPUP) -->
+    <div class="booking-modal-overlay" id="bookingModal">
+      <div class="booking-modal-content">
+        <button type="button" class="modal-close-btn" id="closeModalBtn">&times;</button>
+        
+        <div class="modal-header">
+          <i class="fa-solid fa-hotel"></i>
+          <h3>Almost Done!</h3>
+          <p>Please provide your contact details so we can send you our personalized, non-binding offer.</p>
+        </div>
+
+        <div class="modal-body">
+          <div class="modal-field">
+            <label for="guest-name">Full Name</label>
+            <input type="text" id="guest-name" name="guest-name" placeholder="John Doe" required />
+          </div>
+          <div class="modal-field">
+            <label for="guest-email">Email Address</label>
+            <input type="email" id="guest-email" name="guest-email" placeholder="example@domain.com" required />
+          </div>
+          <div class="modal-field">
+            <label for="guest-phone">Phone Number</label>
+            <input type="tel" id="guest-phone" name="guest-phone" placeholder="+36 30 123 4567" />
+          </div>
+          
+          <!-- Végleges küldő gomb a popup alján -->
+          <button type="submit" class="modal-submit-btn">Send Inquiry</button>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <!-- Sikeres küldés üzenet -->
+  <div class="booking-success" id="bookingSuccess">
+    <i class="fa-solid fa-circle-check"></i>
+    <h3>Thank you!</h3>
+    <p>Your booking inquiry has been successfully received. We will contact you within 24 hours.</p>
+  </div>
+</div>
+<!-- END: BOOKING BAR WITH MODAL POPUP -->
+
+<!-- START: ROOM DETAILS LIST -->
+<div class="room-details-container">
+
+  <!-- Room 1: Deluxe Double Room -->
+  <section class="room-detail-section" id="room-1">
+    <div class="container room-detail-inner">
+      
+      <!-- Bal oldal: Lapozható galéria -->
+      <div class="room-gallery-wrapper">
+        <div class="room-gallery-slider" id="gallery-1">
+          <div class="room-gallery-slide">
+            <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=1000&q=80" alt="Deluxe Double Room Bed" />
+          </div>
+          <div class="room-gallery-slide">
+            <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1000&q=80" alt="Deluxe Double Room Interior" />
+          </div>
+          <div class="room-gallery-slide">
+            <img src="https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?auto=format&fit=crop&w=1000&q=80" alt="Deluxe Double Room Bathroom" />
+          </div>
+        </div>
+        <!-- Navigációs nyilak -->
+        <button class="gallery-nav prev" onclick="moveSlider('gallery-1', -1)" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
+        <button class="gallery-nav next" onclick="moveSlider('gallery-1', 1)" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
+      </div>
+
+      <!-- Jobb oldal: Szoba leírása és adatai -->
+      <div class="room-detail-text">
+        <span class="room-detail-eyebrow">From €150 / Night</span>
+        <h2>Deluxe Double Room</h2>
+        <p class="room-long-desc">A refined 32 m² retreat featuring a plush king-size bed, premium Italian linens, and a beautifully appointed marble bathroom. Step out onto your private balcony to enjoy serene morning views of our manicured Mediterranean gardens.</p>
+        
+        <div class="room-spec-grid">
+          <div><i class="fa-solid fa-maximize"></i> <strong>Size:</strong> 32 m²</div>
+          <div><i class="fa-solid fa-users"></i> <strong>Occupancy:</strong> 2 Adults</div>
+          <div><i class="fa-solid fa-bed"></i> <strong>Bed:</strong> King Size</div>
+          <div><i class="fa-solid fa-mountain-sun"></i> <strong>View:</strong> Garden View</div>
+        </div>
+
+        <div class="room-amenities-list">
+          <span><i class="fa-solid fa-wifi"></i> Free Wi-Fi</span>
+          <span><i class="fa-solid fa-snowflake"></i> Air Conditioning</span>
+          <span><i class="fa-solid fa-tv"></i> 55" Smart TV</span>
+          <span><i class="fa-solid fa-wine-glass"></i> Minibar</span>
+          <span><i class="fa-solid fa-mug-saucer"></i> Nespresso Machine</span>
+        </div>
+
+        <a href="rooms.html#booking" class="btn btn-primary">Book This Room</a>
+      </div>
+      
+    </div>
+  </section>
+
+  <!-- Room 2: Executive Suite -->
+  <section class="room-detail-section" id="room-2">
+    <div class="container room-detail-inner">
+      
+      <!-- Bal oldal: Lapozható galéria -->
+      <div class="room-gallery-wrapper">
+        <div class="room-gallery-slider" id="gallery-2">
+          <div class="room-gallery-slide">
+            <img src="images/double-room.avif" alt="Executive Suite Living Room" />
+          </div>
+          <div class="room-gallery-slide">
+            <img src="images/family-room.avif" alt="Executive Suite Bedroom" />
+          </div>
+          <div class="room-gallery-slide">
+            <img src="images/superior-family-room.avif" alt="Executive Suite Bathroom" />
+          </div>
+        </div>
+        <button class="gallery-nav prev" onclick="moveSlider('gallery-2', -1)" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
+        <button class="gallery-nav next" onclick="moveSlider('gallery-2', 1)" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
+      </div>
+
+      <!-- Jobb oldal -->
+      <div class="room-detail-text">
+        <span class="room-detail-eyebrow">From €290 / Night</span>
+        <h2>Executive Suite</h2>
+        <p class="room-long-desc">Designed for travelers seeking extra space and luxury, this 55 m² suite features a separate stylish living area, an open-concept layout, a freestanding deep soaking bathtub, and floor-to-ceiling windows with panoramic city views.</p>
+        
+        <div class="room-spec-grid">
+          <div><i class="fa-solid fa-maximize"></i> <strong>Size:</strong> 55 m²</div>
+          <div><i class="fa-solid fa-users"></i> <strong>Occupancy:</strong> 3 Adults</div>
+          <div><i class="fa-solid fa-bed"></i> <strong>Bed:</strong> Super King</div>
+          <div><i class="fa-solid fa-city"></i> <strong>View:</strong> City Skyline</div>
+        </div>
+
+        <div class="room-amenities-list">
+          <span><i class="fa-solid fa-wifi"></i> Free Wi-Fi</span>
+          <span><i class="fa-solid fa-snowflake"></i> Air Conditioning</span>
+          <span><i class="fa-solid fa-tv"></i> 65" Smart TV</span>
+          <span><i class="fa-solid fa-couch"></i> Separate Living Room</span>
+          <span><i class="fa-solid fa-bath"></i> Freestanding Bath</span>
+        </div>
+
+        <a href="rooms.html#booking" class="btn btn-primary">Book This Suite</a>
+      </div>
+      
+    </div>
+  </section>
+
+  <!-- Room 3: Presidential Villa -->
+  <section class="room-detail-section" id="room-3">
+    <div class="container room-detail-inner">
+      
+      <!-- Bal oldal: Lapozható galéria -->
+      <div class="room-gallery-wrapper">
+        <div class="room-gallery-slider" id="gallery-3">
+          <div class="room-gallery-slide">
+            <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=1000&q=80" alt="Presidential Villa Pool" />
+          </div>
+          <div class="room-gallery-slide">
+            <img src="https://images.unsplash.com/photo-1540518614846-7eded433c457?auto=format&fit=crop&w=1000&q=80" alt="Presidential Villa Lounge" />
+          </div>
+          <div class="room-gallery-slide">
+            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1000&q=80" alt="Presidential Villa Sea View" />
+          </div>
+        </div>
+        <button class="gallery-nav prev" onclick="moveSlider('gallery-3', -1)" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
+        <button class="gallery-nav next" onclick="moveSlider('gallery-3', 1)" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
+      </div>
+
+      <!-- Jobb oldal -->
+      <div class="room-detail-text">
+        <span class="room-detail-eyebrow">From €650 / Night</span>
+        <h2>Presidential Villa</h2>
+        <p class="room-long-desc">Our ultimate sanctuary. Spanning over 120 m² of pure luxury, the villa boasts a private heated plunge pool, an expansive sun-drenched terrace, a dedicated 24/7 butler service, and unrivaled, unobstructed views of the open sea.</p>
+        
+        <div class="room-spec-grid">
+          <div><i class="fa-solid fa-maximize"></i> <strong>Size:</strong> 120 m²</div>
+          <div><i class="fa-solid fa-users"></i> <strong>Occupancy:</strong> 4 Adults</div>
+          <div><i class="fa-solid fa-bed"></i> <strong>Bed:</strong> 2x Super King</div>
+          <div><i class="fa-solid fa-water"></i> <strong>View:</strong> Sea View</div>
+        </div>
+
+        <div class="room-amenities-list">
+          <span><i class="fa-solid fa-person-concierge"></i> Private Butler</span>
+          <span><i class="fa-solid fa-water-ladder"></i> Private Pool</span>
+          <span><i class="fa-solid fa-wine-glass"></i> Premium Wine Cellar</span>
+          <span><i class="fa-solid fa-umbrella-beach"></i> Sea Terrace</span>
+          <span><i class="fa-solid fa-parking"></i> VIP Transfer</span>
+        </div>
+
+        <a href="rooms.html#booking" class="btn btn-primary">Book The Villa</a>
+      </div>
+      
+    </div>
+  </section>
+
+</div>
+<!-- END: ROOM DETAILS LIST -->
+
+<!-- START: FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <a href="#" class="logo">Aurelia<span>.</span></a>
+    <p>An intimate boutique hotel where timeless elegance meets legendary hospitality.</p>
+    <div class="footer-social">
+      <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+      <a href="#" aria-label="Tripadvisor"><i class="fa-brands fa-tripadvisor"></i></a>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 Aurelia Hotel. All rights reserved. &middot; Crafted with care.
+    </div>
+  </div>
+</footer>
+<!-- END: FOOTER -->
+
+<!-- START: MOBILE STICKY BOOK BUTTON -->
+<div class="mobile-book">
+  <a href="#booking">Book Direct</a>
+</div>
+<!-- END: MOBILE STICKY BOOK BUTTON -->
+
+  <!-- KIZÁRÓLAG EZ AZ EGYETLEN SOR MARADJON A JAVASCRIPTRE! -->
+  <script src="script.js"></script>
+
+</body>
+</html>
