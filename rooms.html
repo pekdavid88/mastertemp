@@ -22,14 +22,26 @@
     <a href="#" class="logo">Aurelia<span>.</span></a>
     <nav>
         <ul class="nav-menu" id="navMenu">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="rooms.html">Rooms</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="index.html#gallery">Gallery</a></li>
-          <li><a href="index.html#reviews">Reviews</a></li>
-          <li><a href="index.html#contact">Contact</a></li>
-          <li><a href="index.html#booking" class="nav-cta">Book Now</a></li>
-        </ul>
+  <li><a href="index.html">Home</a></li>
+  <li><a href="rooms.html">Rooms</a></li>
+  
+  <!-- >>> MÓDOSÍTOTT: LOCATION MENÜPONT ALMENÜVEL <<< -->
+  <li class="nav-item dropdown">
+    <a href="location.html" class="nav-link">
+      Location <i class="fa-solid fa-chevron-down nav-dropdown-icon"></i>
+    </a>
+    <ul class="dropdown-menu">
+      <li><a href="location.html#location">The Neighborhood</a></li>
+      <li><a href="location.html#beaches">Best Beaches</a></li>
+      <li><a href="location.html#sights">Places to Visit</a></li>
+    </ul>
+  </li>
+  
+  <li><a href="gallery.html">Gallery</a></li>
+  <li><a href="index.html#reviews">Reviews</a></li>
+  <li><a href="index.html#contact">Contact</a></li>
+  <li><a href="index.html#booking" class="nav-cta">Book Now</a></li>
+</ul>
     </nav>
     <button class="burger" id="burger" aria-label="Menu">
       <span></span><span></span><span></span>
@@ -297,6 +309,85 @@
 
 </div>
 <!-- END: ROOM DETAILS LIST -->
+
+<!-- START: FACILITIES & HERITAGE SECTION -->
+<section class="facilities-section" id="facilities">
+  <div class="container">
+    
+    <!-- Szekció fejléc -->
+    <div class="section-header-center">
+      <span class="section-subtitle">Our Services</span>
+      <h2 class="section-title">Hotel Facilities & Comfort</h2>
+      <div class="header-divider"></div>
+    </div>
+
+    <!-- 3 oszlopos szolgáltatás rács -->
+    <div class="facilities-grid">
+      
+      <!-- 1. Oszlop: Lobby & Main Bar -->
+      <div class="facility-card">
+        <div class="facility-card-icon">
+          <i class="fa-solid fa-bell-concierge"></i>
+        </div>
+        <h3>Lobby & Main Bar</h3>
+        <ul class="facility-list">
+          <li><i class="fa-solid fa-clock"></i> 24-hours Reception</li>
+          <li><i class="fa-solid fa-language"></i> Multi-lingual staff</li>
+          <li><i class="fa-solid fa-comments-dollar"></i> Currency exchange</li>
+          <li><i class="fa-solid fa-car"></i> Car rental</li>
+        </ul>
+      </div>
+
+      <!-- 2. Oszlop: Pool Bar & Recreation -->
+      <div class="facility-card">
+        <div class="facility-card-icon">
+          <i class="fa-solid fa-umbrella-beach"></i>
+        </div>
+        <h3>Pool & Recreation</h3>
+        <ul class="facility-list">
+          <li><i class="fa-solid fa-water"></i> Swimming pool & sun terrace</li>
+          <li><i class="fa-solid fa-sun"></i> Umbrellas & sunbeds</li>
+          <li><i class="fa-solid fa-glass-water"></i> Pool bar & Snack bar</li>
+          <li><i class="fa-solid fa-child-reaching"></i> Children’s playground</li>
+        </ul>
+      </div>
+
+      <!-- 3. Oszlop: Breakfast & Events -->
+      <div class="facility-card">
+        <div class="facility-card-icon">
+          <i class="fa-solid fa-mug-saucer"></i>
+        </div>
+        <h3>Breakfast & Events</h3>
+        <ul class="facility-list">
+          <li><i class="fa-solid fa-egg"></i> Top quality Greek products</li>
+          <li><i class="fa-solid fa-wheat-awn"></i> Eggs, yogurt & honey</li>
+          <li><i class="fa-solid fa-coffee"></i> Fresh cereals & juices</li>
+          <li><i class="fa-solid fa-wifi"></i> Free high-speed Wi-Fi</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Alsó rész: A hotel története és leírása (About / Heritage) -->
+    <div class="hotel-story-block">
+      <div class="story-content">
+        <span class="story-badge">Since 1991</span>
+        <h3>The Pegasus Story</h3>
+        <p>
+          Pegasus Hotel opened in May 1991, and is proudly owned and operated by the founding family. The hotel features 39 comfortable rooms set in a spacious, lush garden with a unique, bridge-flanked, free-shaped pool – the largest in the North of the Island – where the whole family can truly relax.
+        </p>
+        <p>
+          Outdoors, you will find a lively poolside snack-bar serving a varied menu, as well as an exotic pool bar where you can relax in the shade of a palm tree right in the middle of the pool. Indoors, guests can enjoy a rich breakfast in a large dining area overlooking the sparkling water, while upstairs, the main bar awaits you in a cozy, elegant lounge setting.
+        </p>
+      </div>
+      <div class="story-image">
+        <img src="https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=1000&q=80" alt="Pegasus Hotel pool and palm trees view" />
+      </div>
+    </div>
+
+  </div>
+</section>
+<!-- END: FACILITIES & HERITAGE SECTION -->
 
 <!-- START: FOOTER -->
 <footer class="footer">

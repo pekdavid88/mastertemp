@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aurelia — Luxury Boutique Hotel</title>
+  <meta name="description" content="A premium boutique hotel experience." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- START: NAVIGATION -->
+<header class="navbar" id="navbar">
+  <div class="container">
+    <a href="#" class="logo">Aurelia<span>.</span></a>
+    <nav>
+        <ul class="nav-menu" id="navMenu">
+  <li><a href="index.html">Home</a></li>
+  <li><a href="rooms.html">Rooms</a></li>
+  
+  <!-- >>> MÓDOSÍTOTT: LOCATION MENÜPONT ALMENÜVEL <<< -->
+  <li class="nav-item dropdown">
+    <a href="location.html" class="nav-link">
+      Location <i class="fa-solid fa-chevron-down nav-dropdown-icon"></i>
+    </a>
+    <ul class="dropdown-menu">
+      <li><a href="location.html#location">The Neighborhood</a></li>
+      <li><a href="location.html#beaches">Best Beaches</a></li>
+      <li><a href="location.html#sights">Places to Visit</a></li>
+    </ul>
+  </li>
+  
+  <li><a href="gallery.html">Gallery</a></li>
+  <li><a href="index.html#reviews">Reviews</a></li>
+  <li><a href="index.html#contact">Contact</a></li>
+  <li><a href="index.html#booking" class="nav-cta">Book Now</a></li>
+</ul>
+    </nav>
+    <button class="burger" id="burger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+<!-- END: NAVIGATION -->
+
+<!-- START: SUBPAGE HERO -->
+<section class="hero hero-sub" id="home">
+  <div class="hero-content">
+    <h1>Our Rooms & Suites</h1>
+    <p>Every room is designed to offer a serene retreat with timeless elegance.</p>
+  </div>
+</section>
+<!-- END: SUBPAGE HERO -->
+
+<!-- FRISSÍTETT GALÉRIA GRID (data-index-ekkel ellátva a képek) -->
+<section class="home-gallery-section" id="gallery">
+  <div class="gallery-container">
+    
+    <div class="section-header-center">
+      <span class="section-subtitle">Visual Journey</span>
+      <h2 class="section-title">Capturing the Essence of Luxury</h2>
+      <div class="header-divider"></div>
+    </div>
+
+    <div class="interactive-gallery-grid" id="lightgallery">
+      <!-- 1. Kép -->
+      <div class="gallery-grid-item item-featured">
+        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80" alt="Aurelia Luxury Poolside" data-index="0" loading="lazy" />
+        <div class="gallery-item-overlay">
+          <span class="gallery-item-category">Relaxation</span>
+          <h4 class="gallery-item-title">Infinity Pool & Cabanas</h4>
+        </div>
+      </div>
+
+      <!-- 2. Kép -->
+      <div class="gallery-grid-item">
+        <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=800&q=80" alt="Luxury Suite Interior" data-index="1" loading="lazy" />
+        <div class="gallery-item-overlay">
+          <span class="gallery-item-category">Accommodation</span>
+          <h4 class="gallery-item-title">Deluxe Room Suite</h4>
+        </div>
+      </div>
+
+      <!-- 3. Kép -->
+      <div class="gallery-grid-item">
+        <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=800&q=80" alt="Spa and Wellness" data-index="2" loading="lazy" />
+        <div class="gallery-item-overlay">
+          <span class="gallery-item-category">Wellness</span>
+          <h4 class="gallery-item-title">Aurelia Spa Rituals</h4>
+        </div>
+      </div>
+
+      <!-- 4. Kép -->
+      <div class="gallery-grid-item item-wide">
+        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1000&q=80" alt="Fine Dining" data-index="3" loading="lazy" />
+        <div class="gallery-item-overlay">
+          <span class="gallery-item-category">Gastronomy</span>
+          <h4 class="gallery-item-title">Michelin-Starred Dining</h4>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- LIGHTBOX DIASHOW POPUP (Kattintásra megnyíló nézet) -->
+<div class="lightbox-overlay" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose">&times;</button>
+  
+  <!-- Lapozó nyilak -->
+  <button class="lightbox-arrow arrow-left" id="lightboxPrev">
+    <i class="fa-solid fa-chevron-left"></i>
+  </button>
+  <button class="lightbox-arrow arrow-right" id="lightboxNext">
+    <i class="fa-solid fa-chevron-right"></i>
+  </button>
+
+  <!-- A nagy megjelenített kép -->
+  <div class="lightbox-content">
+    <img src="" id="lightboxImg" alt="Enlarged View" />
+    <div class="lightbox-caption" id="lightboxCaption"></div>
+  </div>
+</div>
+
+<!-- START: FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <a href="#" class="logo">Aurelia<span>.</span></a>
+    <p>An intimate boutique hotel where timeless elegance meets legendary hospitality.</p>
+    <div class="footer-social">
+      <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+      <a href="#" aria-label="Tripadvisor"><i class="fa-brands fa-tripadvisor"></i></a>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 Aurelia Hotel. All rights reserved. &middot; Crafted with care.
+    </div>
+  </div>
+</footer>
+<!-- END: FOOTER -->
+
+<!-- START: MOBILE STICKY BOOK BUTTON -->
+<div class="mobile-book">
+  <a href="#booking">Book Direct</a>
+</div>
+<!-- END: MOBILE STICKY BOOK BUTTON -->
+
+  <!-- KIZÁRÓLAG EZ AZ EGYETLEN SOR MARADJON A JAVASCRIPTRE! -->
+  <script src="script.js"></script>
+
+</body>
+</html>

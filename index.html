@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,229 +9,268 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
 
-<!-- START: NAVIGATION -->
-<header class="navbar" id="navbar">
-  <div class="container">
-    <a href="#" class="logo">Aurelia<span>.</span></a>
-    <nav>
+  <!-- START: NAVIGATION -->
+  <header class="navbar" id="navbar">
+    <div class="container">
+      <a href="#" class="logo">Aurelia<span>.</span></a>
+      <nav>
         <ul class="nav-menu" id="navMenu">
           <li><a href="index.html">Home</a></li>
           <li><a href="rooms.html">Rooms</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="index.html#gallery">Gallery</a></li>
+
+          <!-- >>> MÓDOSÍTOTT: LOCATION MENÜPONT ALMENÜVEL <<< -->
+          <li class="nav-item dropdown">
+            <a href="location.html" class="nav-link">
+              Location <i class="fa-solid fa-chevron-down nav-dropdown-icon"></i>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a href="location.html#location">The Neighborhood</a></li>
+              <li><a href="location.html#beaches">Best Beaches</a></li>
+              <li><a href="location.html#sights">Places to Visit</a></li>
+            </ul>
+          </li>
+
+          <li><a href="gallery.html">Gallery</a></li>
           <li><a href="index.html#reviews">Reviews</a></li>
           <li><a href="index.html#contact">Contact</a></li>
           <li><a href="index.html#booking" class="nav-cta">Book Now</a></li>
         </ul>
-    </nav>
-    <button class="burger" id="burger" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</header>
-<!-- END: NAVIGATION -->
-
-<!-- START: HERO SECTION -->
-<section class="hero" id="home">
-  <div class="hero-content">
-    <span class="hero-eyebrow">Luxury Boutique Hotel</span>
-    <h1>Find Your Perfect Sanctuary</h1>
-    <p>An intimate escape where refined design meets legendary hospitality. Every stay, an unforgettable memory.</p>
-    <div class="hero-actions">
-      <a href="#rooms" class="btn btn-primary">Explore Rooms</a>
-      <a href="#services" class="btn btn-outline">Discover More</a>
+      </nav>
+      <button class="burger" id="burger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-  </div>
-</section>
-<!-- END: HERO SECTION -->
+  </header>
+  <!-- END: NAVIGATION -->
 
-<!-- START: BOOKING BAR WITH MODAL POPUP -->
-<div class="booking-bar-wrap" id="booking">
-  <form
-    class="booking-bar horizontal"
-    id="bookingForm"
-    name="hotel-booking"
-    method="POST"
-    data-netlify="true"
-    netlify-honeypot="bot-field"
-  >
-    <input type="hidden" name="form-name" value="hotel-booking" />
-    <p style="display:none;"><label>Don't fill this out: <input name="bot-field" /></label></p>
-
-    <!-- Kereső sáv mezői (Látható rész) -->
-    <div class="booking-field-group">
-      <label for="check-in">Check-In</label>
-      <div class="input-wrapper">
-        <i class="fa-regular fa-calendar"></i>
-        <input type="date" id="check-in" name="check-in" required />
+  <!-- START: HERO SECTION -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <span class="hero-eyebrow">Luxury Boutique Hotel</span>
+      <h1>Find Your Perfect Sanctuary</h1>
+      <p>An intimate escape where refined design meets legendary hospitality. Every stay, an unforgettable memory.</p>
+      <div class="hero-actions">
+        <a href="#rooms" class="btn btn-primary">Explore Rooms</a>
+        <a href="#services" class="btn btn-outline">Discover More</a>
       </div>
     </div>
+  </section>
+  <!-- END: HERO SECTION -->
 
-    <div class="booking-field-group">
-      <label for="check-out">Check-Out</label>
-      <div class="input-wrapper">
-        <i class="fa-regular fa-calendar"></i>
-        <input type="date" id="check-out" name="check-out" required />
-      </div>
-    </div>
+  <!-- START: BOOKING BAR WITH MODAL POPUP -->
+  <div class="booking-bar-wrap" id="booking">
+    <form class="booking-bar horizontal" id="bookingForm" name="hotel-booking" method="POST" data-netlify="true"
+      netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="hotel-booking" />
+      <p style="display:none;"><label>Don't fill this out: <input name="bot-field" /></label></p>
 
-    <div class="booking-field-group">
-      <label for="room-type">Rooms</label>
-      <div class="input-wrapper">
-        <i class="fa-solid fa-chevron-down"></i>
-        <select id="room-type" name="room-type" required>
-          <option value="" disabled selected>Select Suite</option>
-          <option value="deluxe">Deluxe Double Room</option>
-          <option value="executive">Executive Suite</option>
-          <option value="presidential">Presidential Villa</option>
-        </select>
-      </div>
-    </div>
-
-    <div class="booking-field-group">
-      <label for="adults">Guests</label>
-      <div class="input-wrapper">
-        <i class="fa-solid fa-chevron-down"></i>
-        <select id="adults" name="adults" required>
-          <option value="1">1 Person</option>
-          <option value="2" selected>2 Persons</option>
-          <option value="3">3 Persons</option>
-          <option value="4">4 Persons</option>
-        </select>
-      </div>
-    </div>
-
-    <!-- Ez a gomb nyitja meg a popupot -->
-    <button type="button" class="booking-horizontal-submit" id="openModalBtn">Check<br>Availability</button>
-
-    <!-- ELŐUGRÓ ABLAK (MODAL POPUP) -->
-    <div class="booking-modal-overlay" id="bookingModal">
-      <div class="booking-modal-content">
-        <button type="button" class="modal-close-btn" id="closeModalBtn">&times;</button>
-        
-        <div class="modal-header">
-          <i class="fa-solid fa-hotel"></i>
-          <h3>Almost Done!</h3>
-          <p>Please provide your contact details so we can send you our personalized, non-binding offer.</p>
-        </div>
-
-        <div class="modal-body">
-          <div class="modal-field">
-            <label for="guest-name">Full Name</label>
-            <input type="text" id="guest-name" name="guest-name" placeholder="John Doe" required />
-          </div>
-          <div class="modal-field">
-            <label for="guest-email">Email Address</label>
-            <input type="email" id="guest-email" name="guest-email" placeholder="example@domain.com" required />
-          </div>
-          <div class="modal-field">
-            <label for="guest-phone">Phone Number</label>
-            <input type="tel" id="guest-phone" name="guest-phone" placeholder="+36 30 123 4567" />
-          </div>
-          
-          <!-- Végleges küldő gomb a popup alján -->
-          <button type="submit" class="modal-submit-btn">Send Inquiry</button>
+      <!-- Kereső sáv mezői (Látható rész) -->
+      <div class="booking-field-group">
+        <label for="check-in">Check-In</label>
+        <div class="input-wrapper">
+          <i class="fa-regular fa-calendar"></i>
+          <input type="date" id="check-in" name="check-in" required />
         </div>
       </div>
-    </div>
-  </form>
 
-  <!-- Sikeres küldés üzenet -->
-  <div class="booking-success" id="bookingSuccess">
-    <i class="fa-solid fa-circle-check"></i>
-    <h3>Thank you!</h3>
-    <p>Your booking inquiry has been successfully received. We will contact you within 24 hours.</p>
-  </div>
-</div>
-<!-- END: BOOKING BAR WITH MODAL POPUP -->
+      <div class="booking-field-group">
+        <label for="check-out">Check-Out</label>
+        <div class="input-wrapper">
+          <i class="fa-regular fa-calendar"></i>
+          <input type="date" id="check-out" name="check-out" required />
+        </div>
+      </div>
 
-<!-- START: ROOMS SECTION -->
-<section class="section" id="rooms">
-  <div class="container">
-    <div class="section-header">
-      <span class="eyebrow">Our Accommodations</span>
-      <h2>Rooms & Suites</h2>
-      <p>Each of our rooms is thoughtfully designed to offer a serene retreat with timeless elegance and modern comfort.</p>
-    </div>
+      <div class="booking-field-group">
+        <label for="room-type">Rooms</label>
+        <div class="input-wrapper">
+          <i class="fa-solid fa-chevron-down"></i>
+          <select id="room-type" name="room-type" required>
+            <option value="" disabled selected>Select Suite</option>
+            <option value="deluxe">Deluxe Double Room</option>
+            <option value="executive">Executive Suite</option>
+            <option value="presidential">Presidential Villa</option>
+          </select>
+        </div>
+      </div>
 
-    <div class="rooms-grid">
-      <!-- Room 1 -->
-      <article class="room-card">
-        <div class="room-image">
-          <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=800&q=80" alt="Deluxe Double Room" />
+      <div class="booking-field-group">
+        <label for="adults">Guests</label>
+        <div class="input-wrapper">
+          <i class="fa-solid fa-chevron-down"></i>
+          <select id="adults" name="adults" required>
+            <option value="1">1 Person</option>
+            <option value="2" selected>2 Persons</option>
+            <option value="3">3 Persons</option>
+            <option value="4">4 Persons</option>
+          </select>
         </div>
-        <div class="room-body">
-          <h3>Deluxe Double Room</h3>
-          <div class="room-amenities">
-            <i class="fa-solid fa-wifi" title="Wi-Fi"></i>
-            <i class="fa-solid fa-snowflake" title="Air Conditioning"></i>
-            <i class="fa-solid fa-tv" title="Smart TV"></i>
-            <i class="fa-solid fa-wine-glass" title="Minibar"></i>
-          </div>
-          <p class="room-desc">A refined 32 m² retreat with king bed, marble bathroom, and a private balcony overlooking the garden.</p>
-          <div class="room-footer">
-            <div class="room-price"><strong>€150</strong><small>per night</small></div>
-            <a href="rooms.html#room-deluxe" class="room-btn">View & Book</a>
-          </div>
-        </div>
-      </article>
+      </div>
 
-      <!-- Room 2 -->
-      <article class="room-card">
-        <div class="room-image">
-          <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80" alt="Executive Suite" />
-        </div>
-        <div class="room-body">
-          <h3>Executive Suite</h3>
-          <div class="room-amenities">
-            <i class="fa-solid fa-wifi"></i>
-            <i class="fa-solid fa-snowflake"></i>
-            <i class="fa-solid fa-tv"></i>
-            <i class="fa-solid fa-wine-glass"></i>
-          </div>
-          <p class="room-desc">A spacious 55 m² suite featuring a separate living area, freestanding bathtub, and panoramic city views.</p>
-          <div class="room-footer">
-            <div class="room-price"><strong>€290</strong><small>per night</small></div>
-            <a href="rooms.html#room-executive" class="room-btn">View & Book</a>
-          </div>
-        </div>
-      </article>
+      <!-- Ez a gomb nyitja meg a popupot -->
+      <button type="button" class="booking-horizontal-submit" id="openModalBtn">Check<br>Availability</button>
 
-      <!-- Room 3 -->
-      <article class="room-card">
-        <div class="room-image">
-          <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=800&q=80" alt="Presidential Villa" />
-        </div>
-        <div class="room-body">
-          <h3>Presidential Villa</h3>
-          <div class="room-amenities">
-            <i class="fa-solid fa-wifi"></i>
-            <i class="fa-solid fa-snowflake"></i>
-            <i class="fa-solid fa-tv"></i>
-            <i class="fa-solid fa-wine-glass"></i>
+      <!-- ELŐUGRÓ ABLAK (MODAL POPUP) -->
+      <div class="booking-modal-overlay" id="bookingModal">
+        <div class="booking-modal-content">
+          <button type="button" class="modal-close-btn" id="closeModalBtn">&times;</button>
+
+          <div class="modal-header">
+            <i class="fa-solid fa-hotel"></i>
+            <h3>Almost Done!</h3>
+            <p>Please provide your contact details so we can send you our personalized, non-binding offer.</p>
           </div>
-          <p class="room-desc">Our signature 120 m² villa with private plunge pool, dedicated butler, and unrivaled sea-view terrace.</p>
-          <div class="room-footer">
-            <div class="room-price"><strong>€650</strong><small>per night</small></div>
-            <a href="#booking" class="room-btn">View & Book</a>
+
+          <div class="modal-body">
+            <div class="modal-field">
+              <label for="guest-name">Full Name</label>
+              <input type="text" id="guest-name" name="guest-name" placeholder="John Doe" required />
+            </div>
+            <div class="modal-field">
+              <label for="guest-email">Email Address</label>
+              <input type="email" id="guest-email" name="guest-email" placeholder="example@domain.com" required />
+            </div>
+            <div class="modal-field">
+              <label for="guest-phone">Phone Number</label>
+              <input type="tel" id="guest-phone" name="guest-phone" placeholder="+36 30 123 4567" />
+            </div>
+
+            <!-- Végleges küldő gomb a popup alján -->
+            <button type="submit" class="modal-submit-btn">Send Inquiry</button>
           </div>
         </div>
-      </article>
+      </div>
+    </form>
+
+    <!-- Sikeres küldés üzenet -->
+    <div class="booking-success" id="bookingSuccess">
+      <i class="fa-solid fa-circle-check"></i>
+      <h3>Thank you!</h3>
+      <p>Your booking inquiry has been successfully received. We will contact you within 24 hours.</p>
     </div>
   </div>
-</section>
-<!-- END: ROOMS SECTION -->
+  <!-- END: BOOKING BAR WITH MODAL POPUP -->
 
-<!-- START: RESTAURANT SECTION -->
-<section class="section feature" id="services">
+  <!-- START: ROOMS SECTION -->
+  <section class="section" id="rooms">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Our Accommodations</span>
+        <h2>Rooms & Suites</h2>
+        <p>Each of our rooms is thoughtfully designed to offer a serene retreat with timeless elegance and modern
+          comfort.</p>
+      </div>
+
+      <div class="rooms-grid">
+        <!-- Room 1 -->
+        <article class="room-card">
+          <div class="room-image">
+            <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=800&q=80"
+              alt="Deluxe Double Room" />
+          </div>
+          <div class="room-body">
+            <h3>Deluxe Double Room</h3>
+            <div class="room-amenities">
+              <i class="fa-solid fa-wifi" title="Wi-Fi"></i>
+              <i class="fa-solid fa-snowflake" title="Air Conditioning"></i>
+              <i class="fa-solid fa-tv" title="Smart TV"></i>
+              <i class="fa-solid fa-wine-glass" title="Minibar"></i>
+            </div>
+            <p class="room-desc">A refined 32 m² retreat with king bed, marble bathroom, and a private balcony
+              overlooking the garden.</p>
+            <div class="room-footer">
+              <div class="room-price"><strong>€150</strong><small>per night</small></div>
+              <a href="rooms.html#room-deluxe" class="room-btn">View & Book</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Room 2 -->
+        <article class="room-card">
+          <div class="room-image">
+            <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80"
+              alt="Executive Suite" />
+          </div>
+          <div class="room-body">
+            <h3>Executive Suite</h3>
+            <div class="room-amenities">
+              <i class="fa-solid fa-wifi"></i>
+              <i class="fa-solid fa-snowflake"></i>
+              <i class="fa-solid fa-tv"></i>
+              <i class="fa-solid fa-wine-glass"></i>
+            </div>
+            <p class="room-desc">A spacious 55 m² suite featuring a separate living area, freestanding bathtub, and
+              panoramic city views.</p>
+            <div class="room-footer">
+              <div class="room-price"><strong>€290</strong><small>per night</small></div>
+              <a href="rooms.html#room-executive" class="room-btn">View & Book</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Room 3 -->
+        <article class="room-card">
+          <div class="room-image">
+            <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=800&q=80"
+              alt="Presidential Villa" />
+          </div>
+          <div class="room-body">
+            <h3>Presidential Villa</h3>
+            <div class="room-amenities">
+              <i class="fa-solid fa-wifi"></i>
+              <i class="fa-solid fa-snowflake"></i>
+              <i class="fa-solid fa-tv"></i>
+              <i class="fa-solid fa-wine-glass"></i>
+            </div>
+            <p class="room-desc">Our signature 120 m² villa with private plunge pool, dedicated butler, and unrivaled
+              sea-view terrace.</p>
+            <div class="room-footer">
+              <div class="room-price"><strong>€650</strong><small>per night</small></div>
+              <a href="#booking" class="room-btn">View & Book</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+  <!-- END: ROOMS SECTION -->
+
+  <!-- START: LOCATION TEASER SECTION -->
+  <section class="location-teaser-section">
+    <div class="location-teaser-overlay"></div>
+    <div class="container location-teaser-content">
+      <span class="section-subtitle gold-text">Unrivaled Setting</span>
+      <h2 class="teaser-title">In the Heart of Elegance & Culture</h2>
+      <div class="header-divider"></div>
+
+      <p class="teaser-description">
+        Nestled in the city's most prestigious historic district, Aurelia Boutique Hotel is just steps away from
+        pristine beaches, elite designer boutiques, and centuries of rich local heritage. Discover a sanctuary where
+        tranquility meets vibrant city life.
+      </p>
+
+      <div class="teaser-btn-wrap">
+        <a href="location.html" class="btn btn-primary teaser-btn">
+          Explore the Neighborhood <i class="fa-solid fa-map-location-dot"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+  <!-- END: LOCATION TEASER SECTION -->
+
+  <!-- START: RESTAURANT SECTION -->
+  <!-- <section class="section feature" id="services">
   <div class="container">
     <div class="feature-inner">
       <div class="feature-text">
@@ -250,11 +290,11 @@
       </div>
     </div>
   </div>
-</section>
-<!-- END: RESTAURANT SECTION -->
+</section> -->
+  <!-- END: RESTAURANT SECTION -->
 
-<!-- START: SPA SECTION -->
-<section class="section feature reverse">
+  <!-- START: SPA SECTION -->
+  <!-- <section class="section feature reverse">
   <div class="container">
     <div class="feature-inner">
       <div class="feature-image">
@@ -274,177 +314,198 @@
       </div>
     </div>
   </div>
-</section>
-<!-- END: SPA SECTION -->
+</section> -->
+  <!-- END: SPA SECTION -->
 
-<!-- FRISSÍTETT GALÉRIA GRID (data-index-ekkel ellátva a képek) -->
-<section class="home-gallery-section" id="gallery">
-  <div class="gallery-container">
-    
-    <div class="section-header-center">
-      <span class="section-subtitle">Visual Journey</span>
-      <h2 class="section-title">Capturing the Essence of Luxury</h2>
-      <div class="header-divider"></div>
+  <!-- FRISSÍTETT GALÉRIA GRID (data-index-ekkel ellátva a képek) -->
+  <section class="home-gallery-section" id="gallery">
+    <div class="gallery-container">
+
+      <div class="section-header-center">
+        <span class="section-subtitle">Visual Journey</span>
+        <h2 class="section-title">Capturing the Essence of Luxury</h2>
+        <div class="header-divider"></div>
+      </div>
+
+      <div class="interactive-gallery-grid" id="lightgallery">
+        <!-- 1. Kép -->
+        <div class="gallery-grid-item item-featured">
+          <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80"
+            alt="Aurelia Luxury Poolside" data-index="0" loading="lazy" />
+          <div class="gallery-item-overlay">
+            <span class="gallery-item-category">Relaxation</span>
+            <h4 class="gallery-item-title">Infinity Pool & Cabanas</h4>
+          </div>
+        </div>
+
+        <!-- 2. Kép -->
+        <div class="gallery-grid-item">
+          <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=800&q=80"
+            alt="Luxury Suite Interior" data-index="1" loading="lazy" />
+          <div class="gallery-item-overlay">
+            <span class="gallery-item-category">Accommodation</span>
+            <h4 class="gallery-item-title">Deluxe Room Suite</h4>
+          </div>
+        </div>
+
+        <!-- 3. Kép -->
+        <div class="gallery-grid-item">
+          <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=800&q=80"
+            alt="Spa and Wellness" data-index="2" loading="lazy" />
+          <div class="gallery-item-overlay">
+            <span class="gallery-item-category">Wellness</span>
+            <h4 class="gallery-item-title">Aurelia Spa Rituals</h4>
+          </div>
+        </div>
+
+        <!-- 4. Kép -->
+        <div class="gallery-grid-item item-wide">
+          <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1000&q=80"
+            alt="Fine Dining" data-index="3" loading="lazy" />
+          <div class="gallery-item-overlay">
+            <span class="gallery-item-category">Gastronomy</span>
+            <h4 class="gallery-item-title">Michelin-Starred Dining</h4>
+          </div>
+        </div>
+      </div> <!-- END: interactive-gallery-grid -->
+
+      <!-- >>> ÚJ: GOMB A TELJES GALÉRIÁHOZ <<< -->
+      <div class="gallery-more-btn-wrap">
+        <a href="gallery.html" class="btn btn-primary gallery-view-more">
+          Click here to see more photos <i class="fa-solid fa-arrow-right-long"></i>
+        </a>
+      </div>
+
     </div>
+  </section>
 
-    <div class="interactive-gallery-grid" id="lightgallery">
-      <!-- 1. Kép -->
-      <div class="gallery-grid-item item-featured">
-        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80" alt="Aurelia Luxury Poolside" data-index="0" loading="lazy" />
-        <div class="gallery-item-overlay">
-          <span class="gallery-item-category">Relaxation</span>
-          <h4 class="gallery-item-title">Infinity Pool & Cabanas</h4>
-        </div>
-      </div>
+  <!-- LIGHTBOX DIASHOW POPUP (Kattintásra megnyíló nézet) -->
+  <div class="lightbox-overlay" id="lightbox">
+    <button class="lightbox-close" id="lightboxClose">&times;</button>
 
-      <!-- 2. Kép -->
-      <div class="gallery-grid-item">
-        <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=800&q=80" alt="Luxury Suite Interior" data-index="1" loading="lazy" />
-        <div class="gallery-item-overlay">
-          <span class="gallery-item-category">Accommodation</span>
-          <h4 class="gallery-item-title">Deluxe Room Suite</h4>
-        </div>
-      </div>
+    <!-- Lapozó nyilak -->
+    <button class="lightbox-arrow arrow-left" id="lightboxPrev">
+      <i class="fa-solid fa-chevron-left"></i>
+    </button>
+    <button class="lightbox-arrow arrow-right" id="lightboxNext">
+      <i class="fa-solid fa-chevron-right"></i>
+    </button>
 
-      <!-- 3. Kép -->
-      <div class="gallery-grid-item">
-        <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=800&q=80" alt="Spa and Wellness" data-index="2" loading="lazy" />
-        <div class="gallery-item-overlay">
-          <span class="gallery-item-category">Wellness</span>
-          <h4 class="gallery-item-title">Aurelia Spa Rituals</h4>
-        </div>
-      </div>
-
-      <!-- 4. Kép -->
-      <div class="gallery-grid-item item-wide">
-        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1000&q=80" alt="Fine Dining" data-index="3" loading="lazy" />
-        <div class="gallery-item-overlay">
-          <span class="gallery-item-category">Gastronomy</span>
-          <h4 class="gallery-item-title">Michelin-Starred Dining</h4>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- LIGHTBOX DIASHOW POPUP (Kattintásra megnyíló nézet) -->
-<div class="lightbox-overlay" id="lightbox">
-  <button class="lightbox-close" id="lightboxClose">&times;</button>
-  
-  <!-- Lapozó nyilak -->
-  <button class="lightbox-arrow arrow-left" id="lightboxPrev">
-    <i class="fa-solid fa-chevron-left"></i>
-  </button>
-  <button class="lightbox-arrow arrow-right" id="lightboxNext">
-    <i class="fa-solid fa-chevron-right"></i>
-  </button>
-
-  <!-- A nagy megjelenített kép -->
-  <div class="lightbox-content">
-    <img src="" id="lightboxImg" alt="Enlarged View" />
-    <div class="lightbox-caption" id="lightboxCaption"></div>
-  </div>
-</div>
-
-<!-- START: TESTIMONIALS -->
-<section class="section" id="reviews" style="background: var(--bg-alt);">
-  <div class="container">
-    <div class="section-header">
-      <span class="eyebrow">Guest Experiences</span>
-      <h2>Loved by Our Guests</h2>
-      <p>A collection of memories shared by those who have stayed with us.</p>
-    </div>
-    <div class="testimonials-grid">
-      <div class="testimonial-card">
-        <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-        <p class="testimonial-text">An extraordinary stay from beginning to end. The attention to detail and warmth of the staff are truly unmatched.</p>
-        <div class="testimonial-author">
-          <div class="testimonial-avatar">SM</div>
-          <div><strong>Sophie Martin</strong><span>Paris, France</span></div>
-        </div>
-      </div>
-      <div class="testimonial-card">
-        <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-        <p class="testimonial-text">The perfect romantic escape. The suite was breathtaking and the spa experience simply divine. We will return.</p>
-        <div class="testimonial-author">
-          <div class="testimonial-avatar">JC</div>
-          <div><strong>James Carter</strong><span>London, UK</span></div>
-        </div>
-      </div>
-      <div class="testimonial-card">
-        <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-        <p class="testimonial-text">Impeccable service, gorgeous design, and food that could rival any Michelin-starred restaurant. Absolutely faultless.</p>
-        <div class="testimonial-author">
-          <div class="testimonial-avatar">EK</div>
-          <div><strong>Elena Kovač</strong><span>Milan, Italy</span></div>
-        </div>
-      </div>
+    <!-- A nagy megjelenített kép -->
+    <div class="lightbox-content">
+      <img src="" id="lightboxImg" alt="Enlarged View" />
+      <div class="lightbox-caption" id="lightboxCaption"></div>
     </div>
   </div>
-</section>
-<!-- END: TESTIMONIALS -->
 
-<!-- START: CONTACT & MAP -->
-<section class="section" id="contact">
-  <div class="container">
-    <div class="contact-inner">
-      <div class="contact-info">
-        <span class="eyebrow" style="color: var(--primary-color); font-size: 0.85rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;">Get in Touch</span>
-        <h2 style="margin-top: 1rem;">We're Here to Help</h2>
-        <p>Whether you have a question about your stay, want to plan a special occasion, or need concierge assistance — our team is at your service.</p>
-        <ul class="contact-list">
-          <li>
-            <div class="contact-icon"><i class="fa-solid fa-location-dot"></i></div>
-            <div><strong>Address</strong><span>12 Rivera Boulevard, Coastal District, 06400</span></div>
-          </li>
-          <li>
-            <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
-            <div><strong>Phone</strong><span>+33 (0)4 93 00 00 00</span></div>
-          </li>
-          <li>
-            <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
-            <div><strong>Email</strong><span>reservations@aurelia-hotel.com</span></div>
-          </li>
-        </ul>
+  <!-- START: TESTIMONIALS -->
+  <section class="section" id="reviews" style="background: var(--bg-alt);">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Guest Experiences</span>
+        <h2>Loved by Our Guests</h2>
+        <p>A collection of memories shared by those who have stayed with us.</p>
       </div>
-      <div class="map-placeholder">
-        <iframe
-          src="https://www.openstreetmap.org/export/embed.html?bbox=7.245%2C43.695%2C7.285%2C43.715&layer=mapnik"
-          title="Hotel Location"
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+              class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          <p class="testimonial-text">An extraordinary stay from beginning to end. The attention to detail and warmth of
+            the staff are truly unmatched.</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">SM</div>
+            <div><strong>Sophie Martin</strong><span>Paris, France</span></div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+              class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          <p class="testimonial-text">The perfect romantic escape. The suite was breathtaking and the spa experience
+            simply divine. We will return.</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">JC</div>
+            <div><strong>James Carter</strong><span>London, UK</span></div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+              class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          <p class="testimonial-text">Impeccable service, gorgeous design, and food that could rival any
+            Michelin-starred restaurant. Absolutely faultless.</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">EK</div>
+            <div><strong>Elena Kovač</strong><span>Milan, Italy</span></div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</section>
-<!-- END: CONTACT & MAP -->
+  </section>
+  <!-- END: TESTIMONIALS -->
 
-<!-- START: FOOTER -->
-<footer class="footer">
-  <div class="container">
-    <a href="#" class="logo">Aurelia<span>.</span></a>
-    <p>An intimate boutique hotel where timeless elegance meets legendary hospitality.</p>
-    <div class="footer-social">
-      <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-      <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-      <a href="#" aria-label="Tripadvisor"><i class="fa-brands fa-tripadvisor"></i></a>
+  <!-- START: CONTACT & MAP -->
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="contact-inner">
+        <div class="contact-info">
+          <span class="eyebrow"
+            style="color: var(--primary-color); font-size: 0.85rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;">Get
+            in Touch</span>
+          <h2 style="margin-top: 1rem;">We're Here to Help</h2>
+          <p>Whether you have a question about your stay, want to plan a special occasion, or need concierge assistance
+            — our team is at your service.</p>
+          <ul class="contact-list">
+            <li>
+              <div class="contact-icon"><i class="fa-solid fa-location-dot"></i></div>
+              <div><strong>Address</strong><span>12 Rivera Boulevard, Coastal District, 06400</span></div>
+            </li>
+            <li>
+              <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
+              <div><strong>Phone</strong><span>+33 (0)4 93 00 00 00</span></div>
+            </li>
+            <li>
+              <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
+              <div><strong>Email</strong><span>reservations@aurelia-hotel.com</span></div>
+            </li>
+          </ul>
+        </div>
+        <!-- Jobb oldal: Beágyazott Google Térkép a Pegasus Hotelhez -->
+        <div class="location-media-block">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4251.570071631848!2d19.784346276800942!3d39.7863292937652!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x135b45c311a44aab%3A0xb92d1dc5a98a51cf!2sPegasus%20Hotel!5e1!3m2!1shu!2ssk!4v1784055416586!5m2!1shu!2ssk"
+            title="Pegasus Hotel Location" style="border:0; width: 100%; height: 100%; min-height: 450px;"
+            allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin">
+          </iframe>
+        </div>
+      </div>
     </div>
-    <div class="footer-bottom">
-      &copy; 2026 Aurelia Hotel. All rights reserved. &middot; Crafted with care.
+  </section>
+  <!-- END: CONTACT & MAP -->
+
+  <!-- START: FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <a href="#" class="logo">Aurelia<span>.</span></a>
+      <p>An intimate boutique hotel where timeless elegance meets legendary hospitality.</p>
+      <div class="footer-social">
+        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#" aria-label="Tripadvisor"><i class="fa-brands fa-tripadvisor"></i></a>
+      </div>
+      <div class="footer-bottom">
+        &copy; 2026 Aurelia Hotel. All rights reserved. &middot; Crafted with care.
+      </div>
     </div>
+  </footer>
+  <!-- END: FOOTER -->
+
+  <!-- START: MOBILE STICKY BOOK BUTTON -->
+  <div class="mobile-book">
+    <a href="#booking">Book Direct</a>
   </div>
-</footer>
-<!-- END: FOOTER -->
+  <!-- END: MOBILE STICKY BOOK BUTTON -->
 
-<!-- START: MOBILE STICKY BOOK BUTTON -->
-<div class="mobile-book">
-  <a href="#booking">Book Direct</a>
-</div>
-<!-- END: MOBILE STICKY BOOK BUTTON -->
-
-<script src="script.js"></script>
+  <script src="script.js"></script>
 
 </body>
+
 </html>

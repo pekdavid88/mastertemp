@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aurelia — Luxury Boutique Hotel</title>
+  <meta name="description" content="A premium boutique hotel experience." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- START: NAVIGATION -->
+  <header class="navbar" id="navbar">
+    <div class="container">
+      <a href="#" class="logo">Aurelia<span>.</span></a>
+      <nav>
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="rooms.html">Rooms</a></li>
+
+          <!-- >>> MÓDOSÍTOTT: LOCATION MENÜPONT ALMENÜVEL <<< -->
+          <li class="nav-item dropdown">
+            <a href="location.html" class="nav-link">
+              Location <i class="fa-solid fa-chevron-down nav-dropdown-icon"></i>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a href="location.html#location">The Neighborhood</a></li>
+              <li><a href="location.html#beaches">Best Beaches</a></li>
+              <li><a href="location.html#sights">Places to Visit</a></li>
+            </ul>
+          </li>
+
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="index.html#reviews">Reviews</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+          <li><a href="index.html#booking" class="nav-cta">Book Now</a></li>
+        </ul>
+      </nav>
+      <button class="burger" id="burger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+  <!-- END: NAVIGATION -->
+
+  <!-- START: SUBPAGE HERO -->
+  <section class="hero hero-sub" id="home">
+    <div class="hero-content">
+      <h1>Our Rooms & Suites</h1>
+      <p>Every room is designed to offer a serene retreat with timeless elegance.</p>
+    </div>
+  </section>
+  <!-- END: SUBPAGE HERO -->
+
+  <!-- START: LOCATION & NEIGHBORHOOD SECTION -->
+  <section class="location-section" id="location">
+    <div class="container location-inner">
+
+      <!-- Bal oldal: Szöveges bemutató és távolságok listája -->
+      <div class="location-text-block">
+        <span class="section-subtitle">Prime Location</span>
+        <h2 class="section-title">Location</h2>
+        <div class="header-divider-left"></div>
+
+        <p class="location-lead">
+          Roda is a lovely, traditional fishing village situated 38 kilometres Northwest of Corfu Town (Kerkyra), on the
+          northern tip of the Ionian Islands. It features one of the longest sand and shingle beaches with shallow, safe
+          waters for swimming. The beach stretches for 4 kilometres along the village and has been proudly awarded a
+          Blue Flag.
+        </p>
+
+        <!-- Környékbeli távolságok ikonokkal -->
+        <div class="neighborhood-grid">
+
+          <!-- 1. Roda Beach -->
+          <div class="neighborhood-item">
+            <div class="neighborhood-icon">
+              <i class="fa-solid fa-umbrella-beach"></i>
+            </div>
+            <div class="neighborhood-info">
+              <h4>Roda Beach</h4>
+              <span class="distance">1 km</span>
+              <p>One of the longest, safest shallow sand and shingle beaches in Corfu, awarded with a Blue Flag.</p>
+            </div>
+          </div>
+
+          <!-- 2. Szupermarket -->
+          <div class="neighborhood-item">
+            <div class="neighborhood-icon">
+              <i class="fa-solid fa-cart-shopping"></i>
+            </div>
+            <div class="neighborhood-info">
+              <h4>Super Market</h4>
+              <span class="distance">200 m</span>
+              <p>Easily accessible grocery store nearby for all your daily essentials and local products.</p>
+            </div>
+          </div>
+
+          <!-- 3. Buszmegálló -->
+          <div class="neighborhood-item">
+            <div class="neighborhood-icon">
+              <i class="fa-solid fa-bus"></i>
+            </div>
+            <div class="neighborhood-info">
+              <h4>Bus Stop</h4>
+              <span class="distance">270 m</span>
+              <p>Convenient public transport connection to explore nearby villages and Corfu Town.</p>
+            </div>
+          </div>
+
+          <!-- 4. Korfu Város -->
+          <div class="neighborhood-item">
+            <div class="neighborhood-icon">
+              <i class="fa-solid fa-tree-city"></i>
+            </div>
+            <div class="neighborhood-info">
+              <h4>Corfu Town</h4>
+              <span class="distance">35 km</span>
+              <p>The island's historic capital with its famous Venetian fortresses, Liston, and Spianada Square.</p>
+            </div>
+          </div>
+
+          <!-- 5. Repülőtér -->
+          <div class="neighborhood-item">
+            <div class="neighborhood-icon">
+              <i class="fa-solid fa-plane"></i>
+            </div>
+            <div class="neighborhood-info">
+              <h4>Corfu Airport (CFU)</h4>
+              <span class="distance">35.6 km</span>
+              <p>Ioannis Kapodistrias International Airport, connecting you smoothly to your flights.</p>
+            </div>
+          </div>
+
+          <!-- 6. Kikötő -->
+          <div class="neighborhood-item">
+            <div class="neighborhood-icon">
+              <i class="fa-solid fa-ship"></i>
+            </div>
+            <div class="neighborhood-info">
+              <h4>Corfu Port</h4>
+              <span class="distance">33.2 km</span>
+              <p>The main ferry port with regular domestic and international marine connections.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Jobb oldal: Kép vagy beágyazott Google Térkép -->
+      <div class="location-media-block">
+        <!-- Opció A: Prémium hangulatkép a környékről -->
+        <img src="https://images.unsplash.com/photo-1530841377377-3ff06c0ca713?auto=format&fit=crop&w=1200&q=80"
+          alt="Breathtaking view of the local coast near Aurelia Hotel" class="location-image" />
+
+        <!-- Opció B: Ide beillesztheted a Google Maps iFrame-et is, csak cseréld le a fenti <img>-t erre:
+      <iframe src="https://www.google.com/maps/embed?..." width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe> 
+      -->
+      </div>
+
+    </div>
+  </section>
+  <!-- END: LOCATION & NEIGHBORHOOD SECTION -->
+
+  <!-- START: EXPLORE CORFU SECTION -->
+  <section class="explore-corfu-section">
+    <div class="container corfu-inner">
+
+      <!-- Bal oldal: Gazdag szöveges tartalom -->
+      <div class="corfu-content">
+        <span class="section-subtitle">Island Discovery</span>
+        <h2 class="section-title">Explore Corfu</h2>
+        <div class="header-divider-left"></div>
+
+        <!-- Kiemelt bevezető rész -->
+        <p class="corfu-lead">
+          Corfu in Greece is strongly influenced by the Venetians, the French and the English and for this reason has a
+          cosmopolitan, multicultural charm. One of the most beautiful and romantic islands of the Ionian island group,
+          it offers everything from lush green hills to noble mansions, idyllic beaches, and fascinating museums.
+        </p>
+
+        <!-- Részletes bemutató szöveg két finom bekezdésre bontva -->
+        <div class="corfu-text-details">
+          <p>
+            Strongly influenced by its diverse history, <strong>Corfu Town</strong> is a brilliant base for exploration.
+            Get lost in the narrow cobblestone alleys, the so-called <em>“kandounia”</em>, visit world-class museums
+            like the Museum of Asian Art, walk down the famous Liston promenade, or stroll around the huge Spianada
+            square. The entire town exudes a nostalgic, glorious past visible in imposing palaces, noble mansions, and
+            charming historic squares.
+          </p>
+          <p>
+            Moving away from the historic center, you’ll discover picturesque seaside villages, tiny verdant islets,
+            luxurious resorts, and wild, untouched natural landscapes. It’s truly amazing how the different sides of
+            this idyllic island coexist in perfect harmony, ready to please any type of traveler.
+          </p>
+        </div>
+      </div>
+
+      <!-- Jobb oldal: Hangulatos görög/korfui kép -->
+      <div class="corfu-media-wrapper">
+        <div class="corfu-image-card">
+          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80"
+            alt="Beautiful sunlit street in Corfu Old Town" />
+          <div class="corfu-image-badge">
+            <span>Ionian Pearl</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <!-- END: EXPLORE CORFU SECTION -->
+
+  <!-- START: CORFU BEACHES SECTION -->
+  <section class="corfu-beaches-section" id="beaches">
+    <div class="container">
+
+      <!-- Szekció fejléc -->
+      <div class="section-header-center">
+        <span class="section-subtitle">Coastal Wonders</span>
+        <h2 class="section-title">The Best Beaches of Corfu</h2>
+        <div class="header-divider"></div>
+        <p class="beaches-lead-text">
+          With crystal-clear waters and surrounded by lush greenery, the beaches of Corfu attract travelers from all
+          over the world. Many are fully organized with seaside restaurants, water sports, and beach bars, while others
+          remain untouched, waiting to be discovered.
+        </p>
+      </div>
+
+      <!-- Strandok rácsszerkezete -->
+      <div class="beaches-grid">
+
+        <!-- 1. Strand: Paleokastritsa -->
+        <div class="beach-card">
+          <div class="beach-image">
+            <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=800&q=80"
+              alt="Paleokastritsa beach view" />
+            <span class="beach-distance"><i class="fa-solid fa-location-dot"></i> 23 km from Town</span>
+          </div>
+          <div class="beach-info">
+            <h3>Paleokastritsa Beach</h3>
+
+            <!-- Jellemző címkék (Badges) -->
+            <div class="beach-tags">
+              <span class="tag"><i class="fa-solid fa-mask-snorkel"></i> Diving Club</span>
+              <span class="tag">Sandy</span>
+              <span class="tag">Family Friendly</span>
+              <span class="tag">Organised</span>
+              <span class="tag">Water sports</span>
+            </div>
+
+            <p class="beach-desc">
+              Paleokastritsa is the most famous and probably most picturesque beach resort of the island. Huge, green
+              cliffs surround the coast and many sea caves can be visited by boat around the area.
+            </p>
+          </div>
+        </div>
+
+        <!-- 2. Strand: Agios Gordios -->
+        <div class="beach-card">
+          <div class="beach-image">
+            <img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=800&q=80"
+              alt="Agios Gordios beach view" />
+            <span class="beach-distance"><i class="fa-solid fa-location-dot"></i> 16 km from Town</span>
+          </div>
+          <div class="beach-info">
+            <h3>Agios Gordios Beach</h3>
+
+            <div class="beach-tags">
+              <span class="tag">Sandy</span>
+              <span class="tag">Family Friendly</span>
+              <span class="tag">Organised</span>
+            </div>
+
+            <p class="beach-desc">
+              The beach of Agios Gordios is one of the most popular beaches in Corfu. The wide sandy beach is surrounded
+              by impressive rock formations, vibrant Mediterranean greenery, and excellent tourist facilities.
+            </p>
+          </div>
+        </div>
+
+        <!-- 3. Strand: Myrtiotissa -->
+        <div class="beach-card">
+          <div class="beach-image">
+            <img src="https://images.unsplash.com/photo-1543731068-7e0f5beff43a?auto=format&fit=crop&w=800&q=80"
+              alt="Myrtiotissa beach view" />
+            <span class="beach-distance"><i class="fa-solid fa-location-dot"></i> 17 km from Town</span>
+          </div>
+          <div class="beach-info">
+            <h3>Myrtiotissa Beach</h3>
+
+            <div class="beach-tags">
+              <span class="tag">Partly Organized</span>
+              <span class="tag">Sandy</span>
+              <span class="tag">Nudism Friendly</span>
+            </div>
+
+            <p class="beach-desc">
+              This beach owns its name to the beautiful Monastery of Virgin Mary Myrtiotissa located just above it. It
+              is a stunning, unorganised beach, totally unspoiled by modern tourism and unofficially nudist.
+            </p>
+          </div>
+        </div>
+
+        <!-- 4. Strand: Rovinia -->
+        <div class="beach-card">
+          <div class="beach-image">
+            <img src="https://images.unsplash.com/photo-1506929562872-bb421503ef21?auto=format&fit=crop&w=800&q=80"
+              alt="Rovinia beach view" />
+            <span class="beach-distance"><i class="fa-solid fa-location-dot"></i> 20 km from Town</span>
+          </div>
+          <div class="beach-info">
+            <h3>Rovinia Beach</h3>
+
+            <div class="beach-tags">
+              <span class="tag">Pebbled</span>
+              <span class="tag"><i class="fa-solid fa-compass"></i> Secluded</span>
+              <span class="tag">Non Organised</span>
+            </div>
+
+            <p class="beach-desc">
+              Rovinia is an exotic, hidden paradise located in the Paleokastritsa region. It is reachable only by boat
+              or through a scenic hiking path from the nearby village of Liapades.
+            </p>
+          </div>
+        </div>
+
+        <!-- 5. Strand: Bataria Kassiopi -->
+        <div class="beach-card">
+          <div class="beach-image">
+            <img src="https://images.unsplash.com/photo-1505118380757-91f5f5632de0?auto=format&fit=crop&w=800&q=80"
+              alt="Bataria Kassiopi beach view" />
+            <span class="beach-distance"><i class="fa-solid fa-location-dot"></i> 37 km from Town</span>
+          </div>
+          <div class="beach-info">
+            <h3>Bataria Kassiopi Beach</h3>
+
+            <div class="beach-tags">
+              <span class="tag">Sandy</span>
+              <span class="tag">Family Friendly</span>
+              <span class="tag">Organised</span>
+            </div>
+
+            <p class="beach-desc">
+              A small, clean, and perfectly organized cove near Kassiopi village. Boasting emerald waters and smooth
+              pebbles, it gets very popular in the summer with swimmers and snorkeling enthusiasts.
+            </p>
+          </div>
+        </div>
+
+      </div> <!-- END: beaches-grid -->
+
+    </div>
+  </section>
+  <!-- END: CORFU BEACHES SECTION -->
+
+  <!-- START: CORFU SIGHTSEEING SECTION -->
+  <section class="corfu-sights-section" id="sights">
+    <div class="container">
+
+      <!-- Szekció fejléc -->
+      <div class="section-header-center">
+        <span class="section-subtitle">Cultural Heritage</span>
+        <h2 class="section-title">Places to Visit in Corfu</h2>
+        <div class="header-divider"></div>
+        <p class="sights-lead-text">
+          Every summer, Corfu island attracts thousands of tourists and has become a favorite destination for summer
+          holidays. The historical and religious monuments, the picturesque villages, the beautiful nature, and the
+          hospitality of the locals offer memories difficult to forget. Explore the must-see cultural gems of the
+          island.
+        </p>
+      </div>
+
+      <!-- Látnivalók rácsszerkezete (3 oszlop) -->
+      <div class="sights-grid">
+
+        <!-- 1. Látnivaló: Kanoni and Mouse Island -->
+        <div class="sight-card">
+          <div class="sight-icon-wrapper">
+            <i class="fa-solid fa-monument"></i>
+          </div>
+          <div class="sight-content">
+            <h3>Kanoni & Mouse Island</h3>
+            <p>
+              The region of Kanoni and the Mouse Island (Pontikonisi) is the most picturesque spot of Corfu Town. High
+              up on a hill, there is a canon and from there people can see the Mouse Island and the little church of
+              Panagia Vlaherna, linked with the mainland with a narrow pathway.
+            </p>
+          </div>
+        </div>
+
+        <!-- 2. Látnivaló: Achillion Palace -->
+        <div class="sight-card">
+          <div class="sight-icon-wrapper">
+            <i class="fa-solid fa-gopuram"></i>
+          </div>
+          <div class="sight-content">
+            <h3>Achillion Palace</h3>
+            <p>
+              The Palace was built in 1890 exclusively for Elizabeth (Sissy), the Empress of Austria. It used to serve
+              as the summer retreat of the Empress, who named it Achillion after her favorite Greek hero, Achilles.
+              After her assassination, it was sold to the Kaiser of Germany.
+            </p>
+          </div>
+        </div>
+
+        <!-- 3. Látnivaló: Old Fortress -->
+        <div class="sight-card">
+          <div class="sight-icon-wrapper">
+            <i class="fa-solid fa-chess-rook"></i>
+          </div>
+          <div class="sight-content">
+            <h3>Old Fortress</h3>
+            <p>
+              The Old Fortress of Corfu stands next to Spianada square and Liston. It is an impressive castle built on a
+              peninsula into the sea and connected to the mainland by a narrow bridge. A lighthouse stands on its top
+              and offers a great view of the town and the sea.
+            </p>
+          </div>
+        </div>
+
+        <!-- 4. Látnivaló: Spianada Square -->
+        <div class="sight-card">
+          <div class="sight-icon-wrapper">
+            <i class="fa-solid fa-tree-city"></i>
+          </div>
+          <div class="sight-content">
+            <h3>Spianada Square</h3>
+            <p>
+              Spianada is the most impressive square of Corfu Town and lies between the Old Fortress and the Old Town.
+              This is the second largest square in Europe, after the famous Square of Saint Mark in Venice, radiating a
+              truly cosmopolitan grandeur.
+            </p>
+          </div>
+        </div>
+
+        <!-- 5. Látnivaló: Municipal Art Gallery -->
+        <div class="sight-card">
+          <div class="sight-icon-wrapper">
+            <i class="fa-solid fa-palette"></i>
+          </div>
+          <div class="sight-content">
+            <h3>Municipal Art Gallery</h3>
+            <p>
+              The Municipal Gallery of Corfu is housed in the Palace of Saint Michael and Saint George. It houses
+              brilliant works of local artists of the 19th century and frequently hosts important international and
+              local art exhibitions.
+            </p>
+          </div>
+        </div>
+
+        <!-- 6. Látnivaló: Byzantine Museum -->
+        <div class="sight-card">
+          <div class="sight-icon-wrapper">
+            <i class="fa-solid fa-cross"></i>
+          </div>
+          <div class="sight-content">
+            <h3>Byzantine Museum</h3>
+            <p>
+              Housed in the church of Antivouniotissa, one of the oldest and richest churches in Corfu Town. Converted
+              into a museum in 1979, it exhibits a rich collection of Byzantine and post-Byzantine icons and relics,
+              representing over five centuries of religious art.
+            </p>
+          </div>
+        </div>
+
+      </div> <!-- END: sights-grid -->
+
+    </div>
+  </section>
+  <!-- END: CORFU SIGHTSEEING SECTION -->
+
+  <!-- START: FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <a href="#" class="logo">Aurelia<span>.</span></a>
+      <p>An intimate boutique hotel where timeless elegance meets legendary hospitality.</p>
+      <div class="footer-social">
+        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#" aria-label="Tripadvisor"><i class="fa-brands fa-tripadvisor"></i></a>
+      </div>
+      <div class="footer-bottom">
+        &copy; 2026 Aurelia Hotel. All rights reserved. &middot; Crafted with care.
+      </div>
+    </div>
+  </footer>
+  <!-- END: FOOTER -->
+
+  <!-- START: MOBILE STICKY BOOK BUTTON -->
+  <div class="mobile-book">
+    <a href="#booking">Book Direct</a>
+  </div>
+  <!-- END: MOBILE STICKY BOOK BUTTON -->
+
+  <!-- KIZÁRÓLAG EZ AZ EGYETLEN SOR MARADJON A JAVASCRIPTRE! -->
+  <script src="script.js"></script>
+
+</body>
+
+</html>
